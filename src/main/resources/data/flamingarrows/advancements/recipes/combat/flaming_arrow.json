@@ -1,0 +1,32 @@
+{
+  "parent": "flamingarrows:recipes/root",
+  "rewards": {
+    "recipes": [
+      "flamingarrows:flaming_arrow"
+    ]
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "flamingarrows:flaming_arrow"
+      }
+    },
+    "has_fire_charge": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:fire_charge"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fire_charge"
+    ]
+  ]
+}
