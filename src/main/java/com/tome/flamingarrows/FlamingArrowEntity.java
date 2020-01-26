@@ -1,5 +1,7 @@
 package com.tome.flamingarrows;
 
+import java.lang.reflect.Field;
+
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
@@ -25,7 +27,7 @@ public class FlamingArrowEntity extends AbstractArrowEntity {
 	}
 
 	public FlamingArrowEntity(FMLPlayMessages.SpawnEntity message, World world) {
-		super(FlamingArrows.FlamingArrowEntityType, message.getPosX(), message.getPosY(), message.getPosZ(), world);
+		super(FlamingArrows.FlamingArrowEntityType, getX(message), getY(message), getZ(message), world);
 	}
 
 	@Override
@@ -47,6 +49,60 @@ public class FlamingArrowEntity extends AbstractArrowEntity {
 	@Override
 	public IPacket<?> createSpawnPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
+	}
+
+	/**
+	 * This method is needed for 1.14.2 support, but only because the AT isn't
+	 * working.
+	 * 
+	 * @param msg the message to get the x coordinate from
+	 * @return
+	 */
+	private static double getX(FMLPlayMessages.SpawnEntity msg) {
+		try {
+			Field posX = FMLPlayMessages.SpawnEntity.class.getDeclaredField("posX");
+			posX.setAccessible(true);
+			return posX.getDouble(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0.0;
+		}
+	}
+
+	/**
+	 * This method is needed for 1.14.2 support, but only because the AT isn't
+	 * working.
+	 * 
+	 * @param msg the message to get the y coordinate from
+	 * @return
+	 */
+	private static double getY(FMLPlayMessages.SpawnEntity msg) {
+		try {
+			Field posY = FMLPlayMessages.SpawnEntity.class.getDeclaredField("posY");
+			posY.setAccessible(true);
+			return posY.getDouble(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0.0;
+		}
+	}
+
+	/**
+	 * This method is needed for 1.14.2 support, but only because the AT isn't
+	 * working.
+	 * 
+	 * @param msg the message to get the z coordinate from
+	 * @return
+	 */
+	private static double getZ(FMLPlayMessages.SpawnEntity msg) {
+		try {
+			Field posZ = FMLPlayMessages.SpawnEntity.class.getDeclaredField("posZ");
+			posZ.setAccessible(true);
+			return posZ.getDouble(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0.0;
+		}
 	}
 
 }
