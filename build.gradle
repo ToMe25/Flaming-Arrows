@@ -115,7 +115,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "project.name",
+            "Specification-Title": project.name,
             "Specification-Vendor": "ToMe25",
             "Specification-Version": "${version}",
             "Implementation-Title": project.name,
