@@ -3,7 +3,7 @@ package com.tome.flamingarrows;
 public class Hooks {
 
 	public static int getFlameMaxLevel() {
-		return ConfigHandler.removeFlame ? 0 : 1;
+		return ConfigHandler.removeFlame.get() ? 0 : 1;
 	}
 
 }
