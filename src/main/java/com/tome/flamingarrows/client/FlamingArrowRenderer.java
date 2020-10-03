@@ -19,7 +19,7 @@ public class FlamingArrowRenderer<T extends FlamingArrowEntity> extends ArrowRen
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(FlamingArrowEntity entity) {
+	public ResourceLocation getEntityTexture(FlamingArrowEntity entity) {
 		return RES_FLAMING_ARROW;
 	}
 

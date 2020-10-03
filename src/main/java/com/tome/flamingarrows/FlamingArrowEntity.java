@@ -41,7 +41,8 @@ public class FlamingArrowEntity extends AbstractArrowEntity {
 	public void tick() {
 		super.tick();
 		if (this.world.isRemote && !this.inGround && this.isBurning() && ConfigHandler.addFlameParticles.get()) {
-			this.world.addParticle(ParticleTypes.FLAME, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+			this.world.addParticle(ParticleTypes.FLAME, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D,
+					0.0D);
 		}
 
 	}

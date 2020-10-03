@@ -1,6 +1,5 @@
 package com.tome.flamingarrows.client;
 
-import com.tome.flamingarrows.FlamingArrowEntity;
 import com.tome.flamingarrows.FlamingArrows;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,7 +13,8 @@ public class ModelHandler {
 
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent e) {
-		RenderingRegistry.registerEntityRenderingHandler(FlamingArrowEntity.class, FlamingArrowRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(FlamingArrows.FlamingArrowEntityType,
+				FlamingArrowRenderer::new);
 	}
 
 }

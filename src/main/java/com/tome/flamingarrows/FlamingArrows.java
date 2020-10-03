@@ -5,8 +5,8 @@ import net.minecraft.dispenser.IPosition;
 import net.minecraft.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -42,7 +42,7 @@ public class FlamingArrows {
 		DispenserBlock.registerDispenseBehavior(FlamingArrow, new ProjectileDispenseBehavior() {
 
 			@Override
-			protected IProjectile getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+			protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
 				FlamingArrowEntity arrowentity = new FlamingArrowEntity(worldIn, position.getX(), position.getY(),
 						position.getZ());
 				arrowentity.setFire(100);
